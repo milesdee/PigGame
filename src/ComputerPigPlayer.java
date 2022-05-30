@@ -22,6 +22,9 @@ public class ComputerPigPlayer extends PigPlayer {
      */
     @Override
     public void beginTurn(int myScore, int opponentsScore) {
+        System.out.println(getName() + ", it's your turn!");
+        System.out.println("Your score is " + myScore
+                + ", and your opponent's is " + opponentsScore + ".");
     }
     /**
      * Should the player roll again? The computer always rolls once.
@@ -38,9 +41,19 @@ public class ComputerPigPlayer extends PigPlayer {
     @Override
     public boolean decideIfShouldRoll(int turnNumber, int rollNumber, int
             poolSize, int myScore, int opponentsScore) {
-        // Current strategy is to only roll once. Come up with a better strategy for the computer
-        // player and implement it here.
-        if (rollNumber == 1) return true;
-        else return false;
+        System.out.println("The pool is now " + poolSize + ".");
+        while (true) {
+            System.out.print("Do you wish to roll?" + " ");
+            if (rollNumber == 1 || rollNumber == 2) {
+                System.out.println("y");
+                return true;
+            } else if (poolSize == 6) {
+                System.out.println("n");
+                return false;
+            } else {
+                System.out.println("n");
+                return false;
+            }
+        }
     }
 }
